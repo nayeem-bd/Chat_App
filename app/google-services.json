@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "889871240398",
+    "firebase_url": "https://chat-app-2d568.firebaseio.com",
+    "project_id": "chat-app-2d568",
+    "storage_bucket": "chat-app-2d568.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889871240398:android:6ecf9491b8e58532eb949f",
+        "android_client_info": {
+          "package_name": "com.nayeem_bd.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889871240398-pfii9t99vlq87nopsfhp30uc19jefpma.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nayeem_bd.chatapp",
+            "certificate_hash": "11aa7a3153e21b4fca71c8a33e2915e72a40b8d5"
+          }
+        },
+        {
+          "client_id": "889871240398-nsikhj0r1iu62aun746shae5k1n5hu5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK4z7RWKIgYL9ldTSuXc8eBBzcP4AQFso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889871240398-nsikhj0r1iu62aun746shae5k1n5hu5d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
