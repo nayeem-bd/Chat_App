@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="8"
     tools:context=".MainActivity">
 
     <ListView
         android:id="@+id/listviewId"
         android:layout_width="match_parent"
-        android:layout_height="526dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="0dp"
+        android:layout_weight="8"/>
 
-    <EditText
-        android:id="@+id/addGroupId"
-        android:layout_width="276dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="6dp"
-        android:background="#80B6EC"
-        android:ems="10"
-        android:hint="Write new chat group name"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:weightSum="5"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/addGroupButtonId"
-        android:layout_width="125dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="4dp"
-        android:text="Add Group"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/addGroupId"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="#80B6EC"
+            android:hint="Write new chat group name"
+            android:inputType="text"
+            android:layout_weight="5"/>
+
+        <Button
+            android:id="@+id/addGroupButtonId"
+            android:layout_width="100dp"
+            android:layout_height="64dp"
+            android:text="Add Group"
+            android:textAllCaps="false"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

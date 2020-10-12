@@ -52,11 +52,18 @@ public class MainActivity extends AppCompatActivity {
         addGroupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference databaseReference = firebaseDatabase.getReference(addGroupEditText.getText().toString());
-                databaseReference.setValue("");
+                String group_name = addGroupEditText.getText().toString().trim();
+                if(group_name.isEmpty()){
+                    Toast.makeText(MainActivity.this,"Enter Group Name",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                    DatabaseReference databaseReference = firebaseDatabase.getReference(group_name);
+                    databaseReference.setValue("");
+                }
                 addGroupEditText.setText("");
                 addGroupEditText.requestFocus();
+
             }
         });
 
