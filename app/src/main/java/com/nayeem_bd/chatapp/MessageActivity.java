@@ -88,13 +88,7 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
-    //    scrollView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-        //   @Override
-        //    public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
-          //      scrollView.removeOnLayoutChangeListener(this);
-          //      scrollView.fullScroll(View.FOCUS_DOWN);
-        //    }
-       // });
+
     }
 
     public void append_messages(DataSnapshot dataSnapshot) {
@@ -105,6 +99,13 @@ public class MessageActivity extends AppCompatActivity {
             String User_name = (String) ((DataSnapshot)i.next()).getValue();
 
             messageTextView.append(User_name + " : "+ Message +"\n\n");
+
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollView.fullScroll(View.FOCUS_DOWN);
+                }
+            });
         }
     }
 }
