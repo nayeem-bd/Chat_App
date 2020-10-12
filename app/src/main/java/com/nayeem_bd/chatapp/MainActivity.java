@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<String>(MainActivity.this,R.layout.listitem,R.id.listtextViewId,groupList);
         listView.setAdapter(arrayAdapter);
 
-        request_username();
+        user_check();
+      //  request_username();
 
         addGroupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +89,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void user_check() {
+        SharedPreferences sharedPreferences = getSharedPreferences("userDetails", Context.MODE_PRIVATE);
+        if(sharedPreferences.contains("user_name_key")){
+            Name = sharedPreferences.getString("user_name_key","User not Found");
+            if(Name.equals("User not Found")){
+                request_username();
+            }
+        }
+        else{
+            request_username();
+        }
+    }
+
     private void request_username() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Enter UserName");
@@ -96,6 +114,11 @@ public class MainActivity extends AppCompatActivity {
                 if(Name.isEmpty()){
                     request_username();
                 }
+                SharedPreferences sharedPreferences = getSharedPreferences("userDetails",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("user_name_key",Name);
+                editor.commit();
+                Toast.makeText(MainActivity.this,"Welcome "+ Name,Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

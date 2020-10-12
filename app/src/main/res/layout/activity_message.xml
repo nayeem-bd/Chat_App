@@ -13,6 +13,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:id="@+id/messageScrollViewId"
         android:layout_weight="4.4">
 
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -24,6 +25,7 @@ public class MessageActivity extends AppCompatActivity {
     private TextView messageTextView;
     private Button sendButton;
     private EditText messageEditText;
+    private ScrollView scrollView;
     DatabaseReference root;
     String user_name,group_name;
     @Override
@@ -34,6 +36,7 @@ public class MessageActivity extends AppCompatActivity {
         messageEditText = findViewById(R.id.messageEditTextId);
         messageTextView = findViewById(R.id.messageTextViewId);
         sendButton = findViewById(R.id.sendButtonId);
+        scrollView = findViewById(R.id.messageScrollViewId);
 
         group_name = getIntent().getExtras().get("group_name").toString();
         user_name = getIntent().getExtras().get("user_name").toString();
@@ -85,9 +88,16 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+    //    scrollView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+        //   @Override
+        //    public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
+          //      scrollView.removeOnLayoutChangeListener(this);
+          //      scrollView.fullScroll(View.FOCUS_DOWN);
+        //    }
+       // });
     }
 
-    private void append_messages(DataSnapshot dataSnapshot) {
+    public void append_messages(DataSnapshot dataSnapshot) {
 
         Iterator i = dataSnapshot.getChildren().iterator();
         while(i.hasNext()){
